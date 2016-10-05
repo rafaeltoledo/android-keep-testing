@@ -2,7 +2,6 @@ package net.rafaeltoledo.keeptesting;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.intent.Intents;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -41,9 +40,9 @@ public class HomeActivityTest {
 
     @Rule
     public InstrumentedTestRequestMatcherRule serverRule =
-            new InstrumentedTestRequestMatcherRule(InstrumentationRegistry.getContext());
+            new InstrumentedTestRequestMatcherRule();
 
-    OkHttpIdlingResource idlingResource;
+    private OkHttpIdlingResource idlingResource;
 
     @Before
     public void setupMockServerAndIdlingResource() {

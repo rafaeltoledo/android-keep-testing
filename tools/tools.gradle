@@ -1,7 +1,7 @@
 apply plugin: 'jacoco'
 
 jacoco {
-    toolVersion = '0.7.1.201405082137'
+    toolVersion = '0.7.7.201606060606'
 }
 
 afterEvaluate { project ->
@@ -43,8 +43,10 @@ afterEvaluate { project ->
             sourceDirectories = files("$projectDir/src/main/java")
             classDirectories = fileTree(dir: "$buildDir/intermediates/classes/${buildType.name}",
                     excludes: ['android/**/*.*', '**/R.class', '**/R$*.class', '**/BuildConfig.*'])
-            executionData = files("$buildDir/jacoco/test${buildType.name.capitalize()}UnitTest.exec",
-                    "${buildDir}/outputs/code-coverage/connected/coverage.ec")
+            executionData = fileTree(dir: "$buildDir", includes: [
+                    "jacoco/test${buildType.name.capitalize()}UnitTest.exec",
+                    "outputs/code-coverage/connected/*coverage.ec"
+            ])
         }
     }
 }
